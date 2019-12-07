@@ -11,9 +11,9 @@ namespace encap{
     private double peso; //Em Kg;
     private double pontos; //soma de pontos;
     private cadast usuario;
-    //private List<string> = roupas;
-    //private List<string> = brinquedos;
-    //private List<double> = alimentos;
+    private List<string> roupas;
+    private List<string> brinquedos;
+    private List<double> alimentos;
 
     public doacao(cadast u){
       pontos = u.ver_credito();
@@ -21,15 +21,16 @@ namespace encap{
     }
 
     public void roupa(){
+      roupas = new List<string>();
       Console.WriteLine("Qual o tamanho: P, M ou G");
       tamanho = Console.ReadLine();
       Console.WriteLine("Qual o tipo: calça, camisa, bermuda, vestido, etc");
       tipo = Console.ReadLine();
       Console.WriteLine("Qual o genero: M ou F");
       genero = Console.ReadLine();
-      //roupa.add(tamanho);
-      //roupa.add(tipo);
-      //roupa.add(genero);
+      roupas.Add(tamanho);
+      roupas.Add(tipo);
+      roupas.Add(genero);
 
       pontos = pontos + 100;
 
@@ -39,9 +40,10 @@ namespace encap{
     }
 
     public void brinquedo(){
+      brinquedos = new List<string>();
       Console.WriteLine("Qual o genero: M ou F");
       genero = Console.ReadLine();
-      //brinquedo.add(genero);
+      brinquedos.Add(genero);
 
       pontos = pontos + 50;
 
@@ -51,9 +53,10 @@ namespace encap{
     }
 
     public void alimento(){
+      alimentos = new List<double>();
       Console.WriteLine("Qual o peso do alimento?");
       peso = double.Parse(Console.ReadLine());
-      //alimento.add(peso);
+      alimentos.Add(peso);
 
       pontos = pontos + (50*peso);
 

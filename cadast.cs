@@ -8,7 +8,6 @@ namespace encap{
     private string nome;
     private string cpf;
     private double credito;
-    private List<double> soma;
 
     public cadast(string n, string c){
       nome = n;
@@ -16,12 +15,22 @@ namespace encap{
       credito = 0;
     }
 
-    public void inscricao(){
-      /*StreamWriter dados = File.AppendText("dados.txt");
-      dados.WriteLine(nome);
-      dados.WriteLine(cpf);
-      dados.WriteLine("#");
-      dados.close();*/
+    public void inserir_dados(){
+      StreamWriter w_dados = File.AppendText("dados.txt");
+      w_dados.WriteLine(nome);
+      w_dados.WriteLine(cpf);
+      w_dados.WriteLine(credito);
+      w_dados.WriteLine("#");
+      w_dados.Close();     
+      }
+
+    public void ver_dados(){
+      StreamReader r_dados = File.OpenText("dados.txt");
+      string linha = "";
+      while ((linha = r_dados.ReadLine()) != null) {
+      Console.WriteLine(linha);
+    }
+      r_dados.Close();
     }
 
     public double ver_credito(){ //get credito

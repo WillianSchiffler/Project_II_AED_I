@@ -18,7 +18,8 @@ class MainClass {
     Console.WriteLine("1 - Participar do voluntariado;");
     Console.WriteLine("2 - Ver quantidade de créditos;");
     Console.WriteLine("3 - Ver cupons;");
-    Console.WriteLine("4 - Sair;");
+    Console.WriteLine("4 - Ver dados cadastrados;");
+    Console.WriteLine("5 - Sair;");
     opt = int.Parse(Console.ReadLine());
 
     do{
@@ -96,10 +97,16 @@ class MainClass {
         case 2:
         Console.WriteLine("Quantidade de créditos: {0}", novo_usuario.ver_credito());
         break;
+        
         case 3:
         Console.WriteLine("Opcao inválida!");
-
         break;
+
+        case 4:
+        novo_usuario.inserir_dados();
+        novo_usuario.ver_dados();
+        break;
+
         default:
         Console.WriteLine("Opcao inválida!");
         break;
@@ -109,7 +116,8 @@ class MainClass {
       Console.WriteLine("1 - Participar do voluntariado;");
       Console.WriteLine("2 - Ver quantidade de créditos;");
       Console.WriteLine("3 - Ver cupons;");
-      Console.WriteLine("4 - Sair;");
+      Console.WriteLine("4 - Ver dados cadastrados;");
+      Console.WriteLine("5 - Sair;");
       opt = int.Parse(Console.ReadLine());
 
     }while(opt>=1 && opt<=4);
