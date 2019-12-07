@@ -6,11 +6,11 @@ namespace encap{
 
 class MainClass {
   public static void Main () {
-    int opt, opt2;
+    int opt, opt2, opt3;
     string nome, cpf;
     Console.WriteLine("Qual seu nome?");
     nome = Console.ReadLine();
-    Console.WriteLine("Qual seu 3? Sem pontos");
+    Console.WriteLine("Qual seu cpf? Sem pontos");
     cpf = Console.ReadLine();
     cadast novo_usuario = new cadast(nome, cpf);
     
@@ -35,18 +35,19 @@ class MainClass {
         case 1:
         doacao new_doacao = new doacao(novo_usuario);
         Console.WriteLine("O que deseja doar? 1 - roupa; 2 - brinquedo; 3 - alimento;");
+        opt3 = int.Parse(Console.ReadLine());
         
-        if(int.Parse(Console.ReadLine()) == 1){
+        if(opt3 == 1){
           new_doacao.roupa();
         }
-        else if(int.Parse(Console.ReadLine()) == 2){
+        else if(opt3 == 2){
           new_doacao.brinquedo();
         }
-        else if(int.Parse(Console.ReadLine()) == 3){
+        else if(opt3 == 3){
           new_doacao.alimento();
         }
         else{
-          Console.WriteLine("Opcao inválida!");
+          Console.WriteLine("Opção inválida!");
         }
         break;
 

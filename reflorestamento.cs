@@ -10,9 +10,11 @@ namespace encap{
     private int condicao; //Como ficou a condição do lugar: Boa, média ou ruim;
     private int duracao; //Qtd de tempo do projeto, em dias;
     private double pontos; //soma de pontos;
+    private cadast usuario;
     
   public reflorestamento(cadast u){
       pontos = u.ver_credito();
+      usuario = u;
     }
 
   public void floresta(){
@@ -27,7 +29,7 @@ namespace encap{
 
     pontos = pontos + (condicao*10) + (duracao*15) + (tipo*10) + (metros*20);
 
-    u.add_credito(pontos);
+    usuario.add_credito(pontos);
 
     Console.WriteLine("Limpeza ralizada com sucesso!");
   }
@@ -44,7 +46,7 @@ namespace encap{
 
     pontos = pontos + (condicao*20) + (duracao*10) + (tipo*10) + (metros*40);
 
-    u.add_credito(pontos);
+    usuario.add_credito(pontos);
 
     Console.WriteLine("Limpeza ralizada com sucesso!");
   }
@@ -60,7 +62,7 @@ namespace encap{
 
     pontos = pontos + (condicao*5) + (duracao*10) + (tipo*20) + (metros*50);
 
-    u.add_credito(pontos);
+    usuario.add_credito(pontos);
 
     Console.WriteLine("Limpeza ralizada com sucesso!");
   }

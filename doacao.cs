@@ -10,12 +10,14 @@ namespace encap{
     private string tipo; //calça, camisa, roupa de frio, bermuda, calçado, vestido; 
     private double peso; //Em Kg;
     private double pontos; //soma de pontos;
+    private cadast usuario;
     //private List<string> = roupas;
     //private List<string> = brinquedos;
     //private List<double> = alimentos;
 
     public doacao(cadast u){
       pontos = u.ver_credito();
+      usuario = u;
     }
 
     public void roupa(){
@@ -31,7 +33,7 @@ namespace encap{
 
       pontos = pontos + 100;
 
-      u.add_credito(pontos);
+      usuario.add_credito(pontos);
 
       Console.WriteLine("Doação ralizada com sucesso!");
     }
@@ -43,7 +45,7 @@ namespace encap{
 
       pontos = pontos + 50;
 
-      u.add_credito(pontos);
+      usuario.add_credito(pontos);
 
       Console.WriteLine("Doação ralizada com sucesso!");
     }
@@ -55,7 +57,7 @@ namespace encap{
 
       pontos = pontos + (50*peso);
 
-      u.add_credito(pontos);
+      usuario.add_credito(pontos);
 
       Console.WriteLine("Doação ralizada com sucesso!");
     }

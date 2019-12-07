@@ -9,9 +9,11 @@ namespace encap{
     private int condicao; //Como estava a condição do lugar: Boa, média ou ruim;
     private int ajuda; //Qtd de pessoas que levou pra ajudar;
     private double pontos; //soma de pontos;
+    private cadast usuario;
     
   public limpeza(cadast u){
       pontos = u.ver_credito();
+      usuario = u;
     }
 
   public void praia(){
@@ -24,7 +26,7 @@ namespace encap{
 
     pontos = pontos + (condicao*10) + (tempo*15) + (ajuda*50);
 
-    u.add_credito(pontos);
+    usuario.add_credito(pontos);
 
     Console.WriteLine("Limpeza ralizada com sucesso!");
   }
@@ -39,7 +41,7 @@ namespace encap{
 
     pontos = pontos + (condicao*5) + (tempo*10) + (ajuda*20);
 
-    u.add_credito(pontos);
+    usuario.add_credito(pontos);
 
     Console.WriteLine("Limpeza ralizada com sucesso!");
   }
@@ -54,7 +56,7 @@ namespace encap{
 
     pontos = pontos + (condicao*10) + (tempo*20) + (ajuda*35);
 
-    u.add_credito(pontos);
+    usuario.add_credito(pontos);
 
     Console.WriteLine("Limpeza ralizada com sucesso!");
   }

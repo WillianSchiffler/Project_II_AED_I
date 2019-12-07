@@ -13,7 +13,7 @@ namespace encap{
     public cadast(string n, string c){
       nome = n;
       cpf = c;
-      credito = 1;
+      credito = 0;
     }
 
     public void inscricao(){
@@ -29,7 +29,7 @@ namespace encap{
     }
 
     public void add_credito(double p){ //set credito
-      credito = credito + p;
+      credito = p;
     }
 
   }
