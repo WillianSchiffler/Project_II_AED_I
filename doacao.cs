@@ -12,24 +12,29 @@ namespace encap{
     private double peso; //Em Kg;
     private double pontos; //soma de pontos;
     private cadast usuario;
-    private List<string> roupas = new List<string>();
-    private List<string> brinquedos = new List<string>();
-    private List<double> alimentos = new List<double>();
+    private List<string> roupas;
+    private List<string> brinquedos;
+    private List<double> alimentos;
 
     public doacao(cadast u){
       pontos = u.ver_credito();
       usuario = u;
+      roupas = new List<string>();
+      brinquedos = new List<string>();
+      alimentos = new List<double>();
     }
 
     public void roupa(){
       Console.WriteLine("Qual o tamanho: P, M ou G");
       tamanho = Console.ReadLine();
+      roupas.Add(tamanho);
+
       Console.WriteLine("Qual o tipo: calça, camisa, bermuda, vestido, etc");
       tipo = Console.ReadLine();
+      roupas.Add(tipo);
+
       Console.WriteLine("Qual o genero: M ou F");
       genero = Console.ReadLine();
-      roupas.Add(tamanho);
-      roupas.Add(tipo);
       roupas.Add(genero);
 
       pontos = pontos + 100;
@@ -64,35 +69,37 @@ namespace encap{
     }
 
     public void registrar_doacao(){
-      StreamWriter w_dados_doacao = File.AppendText("dados_doacao.txt");
+      StreamWriter w_dados = File.AppendText("dados_doacao.txt");
 
-      w_dados_doacao.WriteLine("Roupas:");
-      for(int i=0; i<roupas.Count; i=i+3){
-        w_dados_doacao.WriteLine("{0}:{1}:{2}", roupas[i], roupas[i+1], roupas[i+2]);
+      w_dados.WriteLine("Roupas:");
+      foreach(string roup in roupas){
+        w_dados.WriteLine(roup);
       }
-      w_dados_doacao.WriteLine("#######");
+      w_dados.WriteLine("#######");
       
-      w_dados_doacao.WriteLine("Brinquedos:"); 
+      w_dados.WriteLine("Brinquedos:"); 
       foreach(string brinq in brinquedos){
-        w_dados_doacao.WriteLine(brinq);
+        w_dados.WriteLine(brinq);
       }
-      w_dados_doacao.WriteLine("#######");
+      w_dados.WriteLine("#######");
 
-      w_dados_doacao.WriteLine("Alimentos:");
-      for(int k=0; k<alimentos.Count; k++){
-        w_dados_doacao.WriteLine(alimentos[k]);
+      w_dados.WriteLine("Alimentos:");
+      foreach(double aliment in alimentos){
+        w_dados.WriteLine(aliment);
       }
-      w_dados_doacao.WriteLine("#######");
+      w_dados.WriteLine("#######");
 
-    w_dados_doacao.Close(); 
+    w_dados.Close(); 
     }
 
     public void ver_doacao(){
       StreamReader r_dados_doacao = File.OpenText("dados_doacao.txt");
       string linha = "";
+
       while ((linha = r_dados_doacao.ReadLine()) != null) {
-      Console.WriteLine(linha);
-    }
+        Console.WriteLine(linha);
+      }
+      
       r_dados_doacao.Close();
     }
 

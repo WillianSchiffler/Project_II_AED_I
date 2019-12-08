@@ -15,8 +15,8 @@ namespace encap{
   private List<string> cupons_uber = new List<string>();
   
   public troca(cadast u){
-    pontos = u.ver_credito();
     usuario = u;
+    pontos = usuario.ver_credito();
   }
 
   public void trocar(){
