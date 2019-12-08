@@ -10,14 +10,12 @@ namespace encap{
     private string genero; //M ou F;
     private string tipo; //calça, camisa, roupa de frio, bermuda, calçado, vestido; 
     private double peso; //Em Kg;
-    private double pontos; //soma de pontos;
     private cadast usuario;
     private List<string> roupas;
     private List<string> brinquedos;
     private List<double> alimentos;
 
     public doacao(cadast u){
-      pontos = u.ver_credito();
       usuario = u;
       roupas = new List<string>();
       brinquedos = new List<string>();
@@ -37,9 +35,7 @@ namespace encap{
       genero = Console.ReadLine();
       roupas.Add(genero);
 
-      pontos = pontos + 100;
-
-      usuario.add_credito(pontos);
+      usuario.add_credito(op.add_pont(1,1));
 
       Console.WriteLine("Doação ralizada com sucesso!");
     }
@@ -49,9 +45,7 @@ namespace encap{
       genero = Console.ReadLine();
       brinquedos.Add(genero);
 
-      pontos = pontos + 50;
-
-      usuario.add_credito(pontos);
+      usuario.add_credito(op.add_pont(2,1));
 
       Console.WriteLine("Doação ralizada com sucesso!");
     }
@@ -61,9 +55,7 @@ namespace encap{
       peso = double.Parse(Console.ReadLine());
       alimentos.Add(peso);
 
-      pontos = pontos + (50*peso);
-
-      usuario.add_credito(pontos);
+      usuario.add_credito(op.add_pont(3, peso));
 
       Console.WriteLine("Doação ralizada com sucesso!");
     }
