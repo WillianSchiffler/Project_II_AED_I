@@ -1,23 +1,21 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace encap{
 
   class cadast{
-    private string nome;
     private string cpf;
     private double credito;
 
-    public cadast(string n, string c){
-      nome = n;
+    public cadast(string c){
       cpf = c;
       credito = 0;
     }
 
     public void inserir_dados(){
       StreamWriter w_dados = File.AppendText("dados.txt");
-      w_dados.WriteLine(nome);
       w_dados.WriteLine(cpf);
       w_dados.WriteLine(credito);
       w_dados.WriteLine("#");

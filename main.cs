@@ -1,25 +1,40 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace encap{
 
 class MainClass {
   public static void Main () {
-    int opt, opt2, opt3;
-    string nome, cpf;
-    Console.WriteLine("Qual seu nome?");
-    nome = Console.ReadLine();
+    int opt, opt2, opt3, aux = 1;;
+    string cpf;
+
     Console.WriteLine("Qual seu cpf? Sem pontos");
     cpf = Console.ReadLine();
-    cadast novo_usuario = new cadast(nome, cpf);
-    
+
+    StreamReader r_cpf = File.OpenText("dados.txt");
+    string linha = "";
+    while ((linha = r_cpf.ReadLine()) != null) {
+      if(cpf == linha){
+        aux = 2;
+      }    
+    }
+    r_cpf.Close();
+
+    if(aux == 2){
+      Console.WriteLine("cpf já cadastrado");
+    }
+    else{
+    cadast novo_usuario = new cadast(cpf);
+    troca new_troca = new troca(novo_usuario);
     Console.WriteLine("O que deseja fazer?");
     Console.WriteLine("1 - Participar do voluntariado;");
     Console.WriteLine("2 - Ver quantidade de créditos;");
-    Console.WriteLine("3 - Ver cupons;");
+    Console.WriteLine("3 - Trocar;");
     Console.WriteLine("4 - Ver dados cadastrados;");
-    Console.WriteLine("5 - Sair;");
+    Console.WriteLine("5 - Ver cupons;");
+    Console.WriteLine("6 - Sair;");
     opt = int.Parse(Console.ReadLine());
 
     do{
@@ -35,7 +50,7 @@ class MainClass {
         switch(opt2){
         case 1:
         doacao new_doacao = new doacao(novo_usuario);
-        Console.WriteLine("O que deseja doar? 1 - roupa; 2 - brinquedo; 3 - alimento;");
+        Console.WriteLine("O que deseja doar? 1 - roupa; 2 - brinquedo; 3 - alimento; 4 - Ver doações;");
         opt3 = int.Parse(Console.ReadLine());
         
         if(opt3 == 1){
@@ -46,6 +61,10 @@ class MainClass {
         }
         else if(opt3 == 3){
           new_doacao.alimento();
+        }
+        else if(opt3 == 4){
+          new_doacao.registrar_doacao();
+          new_doacao.ver_doacao();
         }
         else{
           Console.WriteLine("Opção inválida!");
@@ -99,12 +118,17 @@ class MainClass {
         break;
         
         case 3:
-        Console.WriteLine("Opcao inválida!");
+        new_troca.trocar();
         break;
 
         case 4:
         novo_usuario.inserir_dados();
         novo_usuario.ver_dados();
+        break;
+
+        case 5:
+        new_troca.escrever_cupom();
+        new_troca.ler_cupom();
         break;
 
         default:
@@ -115,13 +139,15 @@ class MainClass {
       Console.WriteLine("O que deseja fazer?"); 
       Console.WriteLine("1 - Participar do voluntariado;");
       Console.WriteLine("2 - Ver quantidade de créditos;");
-      Console.WriteLine("3 - Ver cupons;");
+      Console.WriteLine("3 - Trocar;");
       Console.WriteLine("4 - Ver dados cadastrados;");
-      Console.WriteLine("5 - Sair;");
+      Console.WriteLine("5 - Ver cupons;");
+      Console.WriteLine("6 - Sair;");
       opt = int.Parse(Console.ReadLine());
 
-    }while(opt>=1 && opt<=4);
+    }while(opt>=1 && opt<=5);
     Console.WriteLine("Programa finalizado!");
   }
+}
 }
 }
